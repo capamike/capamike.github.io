@@ -13,8 +13,8 @@ async function init() {
     var xs = d3.scaleLinear().domain([0,150]).range([0,size])
     var ys = d3.scaleLinear().domain([0,150]).range([size,0])
 
-    var svg = d3.select("svg").attr("width", size+50).attr(
-                        "height", size+50);
+    var svg = d3.select("svg").attr("width", size+200).attr(
+                        "height", size+200);
 
 
     svg.append('g')
