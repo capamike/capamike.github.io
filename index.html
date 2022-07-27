@@ -7,9 +7,14 @@
 <script>
 async function init() {
 
+    var size = 600
+
     var data = await d3.csv("https://flunky.github.io/cars2017.csv")
-    var xs = d3.scaleLinear().domain([0,150]).range([0,400])
-    var ys = d3.scaleLinear().domain([0,150]).range([400,0])
+    var xs = d3.scaleLinear().domain([0,150]).range([0,size-100])
+    var ys = d3.scaleLinear().domain([0,150]).range([size-100,0])
+
+    var svg = layer.append("svg").attr("width", size).attr(
+                        "height", size);
 
     d3.select('svg')
         .append('g')
@@ -18,7 +23,7 @@ async function init() {
 
     d3.select('svg')
         .append('g')
-        .attr('transform', 'translate(50,250)')
+        .attr('transform', 'translate(50,550)')
         .call(d3.axisBottom(xs));
 
     d3.select('svg')
