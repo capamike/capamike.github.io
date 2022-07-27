@@ -1,20 +1,31 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
+<select id="fuel">Select Fuel</select>
 <body onload='init()'>
-<svg width=300 height=300>
+<svg width=1800 height=1000>
 </svg>
 <script>
 async function init() {
 
-    var size = 600
+    var xrange = 1000
+    var yrange = 600
 
     var data = await d3.csv("https://flunky.github.io/cars2017.csv")
-    var xs = d3.scaleLinear().domain([0,150]).range([0,size+400])
-    var ys = d3.scaleLinear().domain([0,150]).range([size,0])
+    var xs = d3.scaleLinear().domain([0,150]).range([0,xrange])
+    var ys = d3.scaleLinear().domain([0,150]).range([yrange,0])
 
-    var svg = d3.select("svg").attr("width", 3*size).attr(
-                        "height", size+400);
+    var svg = d3.select("svg")
+
+    var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
+
+    d3.select('#fuel')
+        .selectAll('option')
+            .data(allFuel)
+        .enter()
+            .append('option')
+        .text(function(d) { return d;})
+        .attr('value', function(d) { return d;})
 
 
     svg.append('g')
