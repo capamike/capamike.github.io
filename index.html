@@ -20,8 +20,8 @@ async function init() {
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
 
     d3.select('#fuel')
-        .style('top', '0px')
-        .style('left', '5px')
+        .style('top', '3000px')
+        .style('left', '4500px')
         .selectAll('myOptions')
             .data(allFuel)
         .enter()
