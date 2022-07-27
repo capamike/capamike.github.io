@@ -18,15 +18,15 @@ async function init() {
 
 
     svg.append('g')
-        .attr('transform', 'translate(200,200)')
+        .attr('transform', 'translate(400,200)')
         .call(d3.axisLeft(ys));
 
     svg.append('g')
-        .attr('transform', 'translate(200,750)')
+        .attr('transform', 'translate(400,750)')
         .call(d3.axisBottom(xs));
 
     svg.append('g')
-        .attr('transform', 'translate(200,200)')
+        .attr('transform', 'translate(400,200)')
         .selectAll('circle')
         .data(data)
         .enter()
