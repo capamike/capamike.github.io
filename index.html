@@ -1,7 +1,7 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
-<select id="fuel" style="left:500px; top:50px;"></select>
+<select id="fuel" style="left:500px; top: 50px;"></select>
 <body onload='init()'>
 </svg>
 <script>
@@ -18,9 +18,7 @@ async function init() {
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
 
-    d3.select('#fuel')
-        .style('top', '3000px')
-        .style('left', '4500px')
+
     d3.select('#fuel')
         .selectAll('myOptions')
             .data(allFuel)
