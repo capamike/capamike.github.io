@@ -8,8 +8,8 @@
 async function init() {
 
     var data = await d3.csv("https://flunky.github.io/cars2017.csv")
-    var xs = d3.scaleLog().domain([10,150]).range([0,200])
-    var ys = d3.scaleLog().domain([10,150]).range([200,0])
+    var xs = d3.scaleLinear().domain([10,150]).range([0,200])
+    var ys = d3.scaleLinear().domain([10,150]).range([200,0])
 
     d3.select('svg')
         .append('g')
