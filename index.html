@@ -2,6 +2,7 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <select id="fuel" style="left:500px; top: 50px;"></select>
+<div id="narrative-viz"></div>
 <body onload='init()'>
 </svg>
 <script>
@@ -14,7 +15,10 @@ async function init() {
     var xs = d3.scaleLinear().domain([0,150]).range([0,xrange])
     var ys = d3.scaleLinear().domain([0,150]).range([yrange,0])
 
-    var svg = d3.select("svg")
+    var svg = d3.select('#narrative-viz')
+        .append("svg")
+            .attr('width', 1800)
+            .attr('height', 1000)
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
 
@@ -28,24 +32,23 @@ async function init() {
         .attr('value', function(d) { return d;})
 
 
-    // svg.append('g')
-    //     .attr('transform', 'translate(400,200)')
-    //     .call(d3.axisLeft(ys));
-    // <svg width=1800 height=1000></svg>
+    svg.append('g')
+        .attr('transform', 'translate(400,200)')
+        .call(d3.axisLeft(ys));
 
-    // svg.append('g')
-    //     .attr('transform', 'translate(400,800)')
-    //     .call(d3.axisBottom(xs));
+    svg.append('g')
+        .attr('transform', 'translate(400,800)')
+        .call(d3.axisBottom(xs));
 
-    // svg.append('g')
-    //     .attr('transform', 'translate(400,200)')
-    //     .selectAll('circle')
-    //     .data(data)
-    //     .enter()
-    //     .append('circle')
-    //     .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
-    //     .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
-    //     .attr('r', 5)
+    svg.append('g')
+        .attr('transform', 'translate(400,200)')
+        .selectAll('circle')
+        .data(data)
+        .enter()
+        .append('circle')
+        .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
+        .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
+        .attr('r', 5)
     
     
         
