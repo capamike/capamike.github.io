@@ -22,7 +22,7 @@ async function init() {
     d3.select('#fuel')
         .style('top', '0px')
         .style('left', '5px')
-        .selectAll('option')
+        .selectAll('myOptions')
             .data(allFuel)
         .enter()
             .append('option')
