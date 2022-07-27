@@ -16,18 +16,16 @@ async function init() {
     var svg = layer.append("svg").attr("width", size).attr(
                         "height", size);
 
-    d3.select('svg')
-        .append('g')
+
+    svg.append('g')
         .attr('transform', 'translate(50,50)')
         .call(d3.axisLeft(ys));
 
-    d3.select('svg')
-        .append('g')
+    svg.append('g')
         .attr('transform', 'translate(50,550)')
         .call(d3.axisBottom(xs));
 
-    d3.select('svg')
-        .append('g')
+    svg.append('g')
         .attr('transform', 'translate(50,50)')
         .selectAll('circle')
         .data(data)
