@@ -7,7 +7,7 @@
 <script>
 async function init() {
 
-    var size = 600
+    var size = 800
 
     var data = await d3.csv("https://flunky.github.io/cars2017.csv")
     var xs = d3.scaleLinear().domain([0,150]).range([0,size-100])
@@ -18,15 +18,15 @@ async function init() {
 
 
     svg.append('g')
-        .attr('transform', 'translate(50,50)')
+        .attr('transform', 'translate(200,200)')
         .call(d3.axisLeft(ys));
 
     svg.append('g')
-        .attr('transform', 'translate(50,550)')
+        .attr('transform', 'translate(200,550)')
         .call(d3.axisBottom(xs));
 
     svg.append('g')
-        .attr('transform', 'translate(50,50)')
+        .attr('transform', 'translate(200,200)')
         .selectAll('circle')
         .data(data)
         .enter()
