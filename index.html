@@ -19,7 +19,15 @@ async function init() {
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
 
-    
+    d3.select('#fuel')
+        .style('top', '0px')
+        .style('left', '5px')
+        .selectAll('option')
+            .data(allFuel)
+        .enter()
+            .append('option')
+        .text(function(d) { return d;})
+        .attr('value', function(d) { return d;})
 
 
     svg.append('g')
@@ -40,15 +48,7 @@ async function init() {
         .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
         .attr('r', 5)
     
-    d3.select('#fuel')
-        .style('top', '0px')
-        .style('left', '5px')
-        .selectAll('option')
-            .data(allFuel)
-        .enter()
-            .append('option')
-        .text(function(d) { return d;})
-        .attr('value', function(d) { return d;})
+    
         
 
 }
