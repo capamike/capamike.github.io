@@ -50,6 +50,18 @@ async function init() {
         .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
         .attr('r', 5)
     
+    d3.select('#fuel').on('change', function(d){
+        
+        var fuelSelected = d3.select(this).property('value')
+        var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
+
+        svg.data(filteredData)
+            .transition()
+            .duration(1000)
+            .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
+            .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
+            .attr('r', 5)
+    })
     
         
 
