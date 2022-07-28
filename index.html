@@ -43,7 +43,7 @@ async function init() {
     svg.append('g')
         .attr('transform', 'translate(400,200)')
         .selectAll('circle')
-        .data(data)
+        .data(data.filter(function(d){return d.Fuel == allFuel[0]}))
         .enter()
         .append('circle')
         .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
