@@ -55,9 +55,10 @@ async function init() {
         var fuelSelected = d3.select(this).property('value')
         var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
 
-        svg.selectAll('circle')
+        svg.append('g')
+            .attr('transform', 'translate(400,200)')
+            .selectAll('circle')
             .data(filteredData)
-            .enter()
             .join('circle')
             .transition()
             .duration(1000)
