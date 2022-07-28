@@ -55,7 +55,7 @@ async function init() {
         var fuelSelected = d3.select(this).property('value')
         var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
 
-        svg.data(filteredData)
+        svg.datum(filteredData)
             .transition()
             .duration(1000)
             .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
