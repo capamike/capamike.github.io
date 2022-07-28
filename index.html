@@ -58,7 +58,7 @@ async function init() {
 
         svg.selectAll('circle').data(filteredData)
         svg.exit().remove()
-        svg.enter().append('circle').attr('r', 0)
+        svg.enter().append('circle')
         svg.transition()
             .duration(1000)
             .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
