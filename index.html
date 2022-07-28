@@ -56,9 +56,7 @@ async function init() {
         var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
         console.log(filteredData)
 
-        svg.selectAll('circle').data(filteredData)
-            .exit().remove()
-            .enter().append('circle')
+        svg.datum(filteredData)
             .transition()
             .duration(1000)
             .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
