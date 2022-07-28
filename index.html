@@ -56,14 +56,27 @@ async function init() {
         var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
         console.log(filteredData)
 
-        svg.selectAll('circle').remove()
-        svg
-            .datum(filteredData)
-            .transition()
-            .duration(1000)
-            .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
-            .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
-            .attr('r', 5)
+        svg.join(
+            enter => enter.append('circle')
+                            .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
+                            .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
+                            .attr('r', 5),
+            
+            update => update.transition()
+                        .duration(1000)
+                        .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
+                        .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
+                        .attr('r', 5),
+            exit => exit.remove()
+        )
+
+        // svg.se
+        //     .datum(filteredData)
+        //     .transition()
+        //     .duration(1000)
+        //     .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
+        //     .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
+        //     .attr('r', 5)
 
         
     })
