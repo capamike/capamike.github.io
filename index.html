@@ -61,6 +61,7 @@ async function init() {
             .selectAll('circle')
             .data(filteredData)
             .enter()
+            .append('circle')
             .transition()
             .duration(1000)
             .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
