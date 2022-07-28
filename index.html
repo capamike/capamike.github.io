@@ -50,7 +50,7 @@ async function init() {
         .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
         .attr('r', 5)
     
-    d3.select('#fuel').on('change', function(d){
+    d3.select('#fuel').on('change', function(inp){
         
         var fuelSelected = d3.select(this).property('value')
         var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
