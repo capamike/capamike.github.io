@@ -51,13 +51,11 @@ async function init() {
         .attr('r', 5)
     
     d3.select('#fuel').on('change', function(inp){
-        console.log('change triggered')
-        var fuelSelected = d3.select(this).property('value')
-        console.log(fuelSelected)
-        var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
-        console.log(filteredData)
 
-        svg.datum(filteredData)
+        var fuelSelected = d3.select(this).property('value')
+        var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
+
+        svg.merge(filteredData)
             .transition()
             .duration(1000)
             .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
