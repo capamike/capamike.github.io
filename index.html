@@ -56,8 +56,8 @@ async function init() {
         var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
         console.log(filteredData)
 
-        svg.selectAll('circle').remove()
         svg.selectAll('circle').data(filteredData)
+        svg.exit().remove()
         svg.enter().append('circle')
         svg.transition()
             .duration(1000)
