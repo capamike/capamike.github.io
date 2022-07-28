@@ -60,12 +60,13 @@ async function init() {
             .attr('transform', 'translate(400,200)')
             .selectAll('circle')
             .data(filteredData)
-            .join('circle')
+            .enter()
             .transition()
             .duration(1000)
             .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
             .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
             .attr('r', 5)
+        svg.exit().remove()
     })
     
         
