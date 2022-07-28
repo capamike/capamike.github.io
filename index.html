@@ -60,6 +60,8 @@ async function init() {
             .data(filteredData)
             .join(
                 enter => enter.append('circle')
+                                .transition()
+                                .duration(1000)
                                 .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
                                 .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
                                 .attr('r', 5),
