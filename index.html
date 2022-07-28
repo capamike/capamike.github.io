@@ -55,6 +55,7 @@ async function init() {
         var fuelSelected = d3.select(this).property('value')
         console.log(fuelSelected)
         var filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
+        console.log(filteredData)
 
         svg.datum(filteredData)
             .transition()
