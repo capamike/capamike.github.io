@@ -100,7 +100,7 @@ async function init() {
         .on('mouseover', function(d) {
 
             tooltip.transition()
-                .duration(500)
+                .duration(200)
                 .style('opacity', function(data) {
                     if(d.Fuel == fuelSelected) 
                         return 1.0
@@ -116,7 +116,7 @@ async function init() {
         })
         .on('mouseout', function(d){
             tooltip.transition()
-                .duration(500)
+                .duration(200)
                 .style('opacity', 0)
         })
     
