@@ -26,7 +26,6 @@ div.select {
 }
 
 </style>
-<select id="fuel" class="select"></select>
 <div id="narrative-viz"></div>
 <body onload='init()'>
 </svg>
@@ -48,6 +47,10 @@ async function init() {
     var tooltip = d3.select('body').append('div')
                     .attr('class', 'tooltip')
                     .style('opacity', 0);
+    
+    var fuelDropdown = d3.select('body').append('select')
+                    .attr('class', 'select')
+                    
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
     var fuelSelected = allFuel[0]
@@ -57,11 +60,11 @@ async function init() {
       .range(d3.schemeSet2);
 
 
-    d3.select('#fuel')
-        .selectAll('myOptions')
+      fuelDropdown
+        .selectAll()
             .data(allFuel)
         .enter()
-            .append('option')
+        .append('option')
         .text(function(d) { return d;})
         .attr('value', function(d) { return d;})
 
