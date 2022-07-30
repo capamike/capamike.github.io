@@ -15,7 +15,7 @@ div.tooltip {
     pointer-events: none;			
 }
 
-div.select {	
+select.fuel {	
     position: absolute;			
     text-align: center;			
     width: 100px;					
@@ -49,7 +49,7 @@ async function init() {
                     .style('opacity', 0);
     
     var fuelDropdown = d3.select('body').append('select')
-                    .attr('class', 'select')
+                    .attr('class', 'fuel')
                     
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
