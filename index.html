@@ -42,9 +42,9 @@ async function init() {
         .call(d3.axisLeft(ys));
 
     svg.append("text")    
-        .attr("transform", "rotate(-90)")         
         .attr("transform",
             "translate(350,500)")
+        .attr("transform", "rotate(-90)")         
         .style("text-anchor", "middle")
         .text("Average Highway MPG");
 
