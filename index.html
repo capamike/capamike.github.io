@@ -67,11 +67,7 @@ async function init() {
                                 .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
                                 .attr('r', 5),
                 
-                update => update.transition()
-                            .duration(1000)
-                            .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
-                            .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
-                            .attr('r', 5),
+                update => update.remove(),
                 exit => exit.remove()
         )
 
