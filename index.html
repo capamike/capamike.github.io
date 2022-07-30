@@ -45,6 +45,12 @@ async function init() {
         .attr('transform', 'translate(400,800)')
         .text('Average City MPG')
         .call(d3.axisBottom(xs));
+
+    svg.append("text")             
+        .attr("transform",
+            "translate(900,820)")
+        .style("text-anchor", "middle")
+        .text("Average City MPG");
         
 
     svg.append('g')
