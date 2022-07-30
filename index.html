@@ -1,8 +1,24 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {stroke: black;} </style>
+<style> circle {stroke: black;} 
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+</style>
 <select id="fuel" style="left:500px; top: 50px;"></select>
 <div id="narrative-viz"></div>
+<div id="tooltip"></div>
 <body onload='init()'>
 </svg>
 <script>
@@ -19,6 +35,10 @@ async function init() {
         .append("svg")
             .attr('width', 1800)
             .attr('height', 1000)
+
+    var tooltip = d3.select('#tooltip')
+                    .attr('class', 'tooltip')
+                    .style('opacity', 0);
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
 
@@ -77,11 +97,24 @@ async function init() {
             else
                 return 0.0 
             })
+        .on('mouseover', function(d) {
+            tooltip.transition()
+                .duration(500)
+                .style('opacity', 1);
+
+            tooltip.html('Make: '+ d.Make +'<br/>' + 'Cylinders: '+ d.EngineCylinders +'<br/>'+ 'AverageHighwayMPG: '+ d.AverageHighwayMPG +'<br/>'+ 'AverageCityMPG: '+ d.AverageCityMPG)
+                .style('left', (d3.event.pageX) + 'px')
+                .style('top', (d3.event.PageY-30) +'px')
+        })
+        .on('mouseout', function(d){
+            tooltip.transition()
+                .duration(500)
+                .style('opacity', 0)
+        })
     
     d3.select('#fuel').on('change', function(inp){
 
         var fuelSelected = d3.select(this).property('value')
-        // filteredData = data.filter(function(d){return d.Fuel == fuelSelected})
 
         svg
             .selectAll('circle')
@@ -94,8 +127,6 @@ async function init() {
                 else
                     return 0.0 
             })
-            
-
         
     })
     
