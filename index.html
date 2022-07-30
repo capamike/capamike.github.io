@@ -40,6 +40,7 @@ async function init() {
                     .style('opacity', 0);
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
+    var fuelSelected = allFuel[0]
 
     var colors = d3.scaleOrdinal()
       .domain(allFuel)
@@ -91,7 +92,7 @@ async function init() {
         .attr('r', 5)
         .attr('fill', function(d) { return colors(d.Fuel)})
         .style('opacity', function(d) { 
-            if(d.Fuel == allFuel[0]) 
+            if(d.Fuel == fuelSelected) 
                 return 1.0
             else
                 return 0.0 
@@ -99,11 +100,16 @@ async function init() {
         .on('mouseover', function(d) {
             tooltip.transition()
                 .duration(500)
-                .style('opacity', 1);
+                .style('opacity', function(d) {
+                    if(d.Fuel == fuelSelected) 
+                        return 1.0
+                    else
+                        return 0.0
+                });
 
             tooltip.html('Make: '+ d.Make +'<br/>' + 'Cylinders: '+ d.EngineCylinders +'<br/>'+ 'AverageHighwayMPG: '+ d.AverageHighwayMPG +'<br/>'+ 'AverageCityMPG: '+ d.AverageCityMPG)
                 .style('left', (d3.event.pageX) + 'px')
-                .style('top', (d3.event.PageY-30) +'px')
+                .style('top', (d3.event.pageY-30) +'px')
         })
         .on('mouseout', function(d){
             tooltip.transition()
@@ -113,7 +119,7 @@ async function init() {
     
     d3.select('#fuel').on('change', function(inp){
 
-        var fuelSelected = d3.select(this).property('value')
+        fuelSelected = d3.select(this).property('value')
 
         svg
             .selectAll('circle')
