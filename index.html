@@ -38,19 +38,18 @@ async function init() {
 
     svg.append('g')
         .attr('transform', 'translate(400,200)')
-        .text('Average Highway MPG')
         .call(d3.axisLeft(ys));
 
     svg.append("text")    
         .attr("transform", "rotate(-90)")   
         .attr('x', 350)
-        .attr('y', 460)      
+        .attr('y', 1000)      
+        .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("Average Highway MPG");
 
     svg.append('g')
         .attr('transform', 'translate(400,800)')
-        .text('Average City MPG')
         .call(d3.axisBottom(xs));
 
     svg.append("text")             
