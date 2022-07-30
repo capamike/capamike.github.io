@@ -50,7 +50,7 @@ async function init() {
         .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
         .attr('r', 5)
         .style('opacity', function(d) { 
-            if(d.fuel == allFuel[0]) 
+            if(d.Fuel == allFuel[0]) 
                 return 1.0
             else
                 return 0.0 
@@ -66,7 +66,7 @@ async function init() {
             .transition()
             .duration(1000)
             .style('opacity', function(d){
-                if(d.fuel == fuelSelected) 
+                if(d.Fuel == fuelSelected) 
                     return 1.0
                 else
                     return 0.0 
