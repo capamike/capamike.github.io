@@ -18,7 +18,6 @@ div.tooltip {
 </style>
 <select id="fuel" style="left:500px; top: 50px;"></select>
 <div id="narrative-viz"></div>
-<div id="tooltip"></div>
 <body onload='init()'>
 </svg>
 <script>
@@ -36,7 +35,7 @@ async function init() {
             .attr('width', 1800)
             .attr('height', 1000)
 
-    var tooltip = d3.select('#tooltip')
+    var tooltip = d3.select('body').append('div')
                     .attr('class', 'tooltip')
                     .style('opacity', 0);
 
