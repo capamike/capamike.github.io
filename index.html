@@ -98,9 +98,6 @@ async function init() {
                 return 0.0 
             })
         .on('mouseover', function(d) {
-            tooltip.html('Make: '+ d.Make +'<br/>' + 'Cylinders: '+ d.EngineCylinders +'<br/>'+ 'AverageHighwayMPG: '+ d.AverageHighwayMPG +'<br/>'+ 'AverageCityMPG: '+ d.AverageCityMPG)
-                .style('left', (d3.event.pageX) + 'px')
-                .style('top', (d3.event.pageY-30) +'px')
 
             tooltip.transition()
                 .duration(500)
@@ -110,6 +107,12 @@ async function init() {
                     else
                         return 0.0
                 });
+
+            tooltip.html('Make: '+ d.Make +'<br/>' + 'Cylinders: '+ d.EngineCylinders +'<br/>'+ 'AverageHighwayMPG: '+ d.AverageHighwayMPG +'<br/>'+ 'AverageCityMPG: '+ d.AverageCityMPG)
+                .style('left', (d3.event.pageX) + 'px')
+                .style('top', (d3.event.pageY-30) +'px')
+
+            
         })
         .on('mouseout', function(d){
             tooltip.transition()
