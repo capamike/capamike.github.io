@@ -44,7 +44,9 @@ async function init() {
     svg.append("text")    
         .attr("transform",
             "translate(350,500)")
-        .attr("transform", "rotate(-90)")         
+        .attr("transform", "rotate(-90)")   
+        .attr('x', 350)
+        .attr('y', 460)      
         .style("text-anchor", "middle")
         .text("Average Highway MPG");
 
