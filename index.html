@@ -52,8 +52,11 @@ async function init() {
         .style("text-anchor", "middle")
         .text("Average City MPG");
     
-    svg.append("text")    
-        .attr("transform", d3.transform('translate(350,450) rotate(-90)'))   
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 – 200)
+        .attr("x",0 - 500)
+        .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("Average Highway MPG");
         
