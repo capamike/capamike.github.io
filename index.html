@@ -91,6 +91,12 @@ async function init() {
         .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
         .attr('r', 5)
         .attr('fill', function(d) { return colors(d.Fuel)})
+        .style('opacity', function(d){
+            if(d.Fuel == fuelSelected) 
+                return 1
+            else
+                return 0
+        })
         .style('visibility', function(d) { 
             if(d.Fuel == fuelSelected) 
                 return 'visible'
@@ -129,6 +135,12 @@ async function init() {
             .transition()
             .duration(1000)
             .attr('fill', function(d) { return colors(d.Fuel)})
+            .style('opacity', function(d){
+                if(d.Fuel == fuelSelected) 
+                    return 1
+                else
+                    return 0
+            })
             .style('visibility', function(d){
                 if(d.Fuel == fuelSelected) 
                     return 'visible'
