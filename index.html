@@ -49,7 +49,7 @@ async function init() {
         .attr('cx', function(d) { return xs(Number.parseInt(d.AverageCityMPG));})
         .attr('cy', function(d) { return ys(Number.parseInt(d.AverageHighwayMPG));})
         .attr('r', 5)
-        .attr('opacity', function(d) { 
+        .style('opacity', function(d) { 
             if(d.fuel == allFuel[0]) 
                 return 1.0
             else
@@ -65,7 +65,7 @@ async function init() {
             .selectAll('circle')
             .transition()
             .duration(1000)
-            .attr('opacity', function(d){
+            .style('opacity', function(d){
                 if(d.fuel == fuelSelected) 
                     return 1.0
                 else
