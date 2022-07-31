@@ -51,36 +51,41 @@ h1.header1 {
 <script>
 
 async function calculateAverages(data) {
-    var count = 0
     var tmp = {
         'gas_hw_sum': 0,
         'gas_city_sum': 0,
+        'gas_cnt': 0,
         'elec_hw_sum': 0,
         'elec_city_sum': 0,
+        'elec_cnt': 0,
         'diesel_hw_sum': 0,
-        'diesel_city_sum': 0
+        'diesel_city_sum': 0,
+        'diesel_cnt': 0
     }
 
     data.forEach(function(d){
-        count += 1
+        
         if (d.Fuel == 'Gasoline') {
             tmp['gas_hw_sum'] += Number.parseInt(d.AverageHighwayMPG)
             tmp['gas_city_sum'] += Number.parseInt(d.AverageCityMPG)
+            tmp['gas_cnt'] += 1
         }
         if (d.Fuel == 'Electricity') {
             tmp['elec_hw_sum'] += Number.parseInt(d.AverageHighwayMPG)
             tmp['elec_city_sum'] += Number.parseInt(d.AverageCityMPG)
+            tmp['elec_cnt'] += 1
         }
         if (d.Fuel == 'Diesel') {
             tmp['diesel_hw_sum'] += Number.parseInt(d.AverageHighwayMPG)
             tmp['diesel_city_sum'] += Number.parseInt(d.AverageCityMPG)
+            tmp['diesel_cnt'] += 1
         }
     })
 
     return {
-        gas_avg: [tmp['gas_city_sum']/count, tmp['gas_hw_sum']/count],
-        elec_avg: [tmp['elec_city_sum']/count, tmp['elec_hw_sum']/count],
-        diesel_avg: [tmp['diesel_city_sum']/count, tmp['diesel_hw_sum']/count]
+        gas_avg: [tmp['gas_city_sum']/tmp['gas_cnt'], tmp['gas_hw_sum']/tmp['gas_cnt']],
+        elec_avg: [tmp['elec_city_sum']/tmp['elec_cnt'], tmp['elec_hw_sum']/tmp['elec_cnt']],
+        diesel_avg: [tmp['diesel_city_sum']/tmp['diesel_cnt'], tmp['diesel_hw_sum']/tmp['diesel_cnt']]
     }
 }
 
@@ -94,7 +99,6 @@ async function init() {
     var ys = d3.scaleLinear().domain([0,160]).range([yrange,0])
 
     var averages = await calculateAverages(data)
-    console.log(averages)
 
     const vizAnnotations = [
         {
