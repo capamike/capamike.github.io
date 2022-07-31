@@ -25,6 +25,16 @@ select.fuel {
     top: 170px;
 }
 
+h1.header1 {	
+    position: absolute;			
+    text-align: center;			
+    width: 100px;					
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    left: 900px;
+    top: 60px;
+}
+
 </style>
 <div id="narrative-viz"></div>
 <body onload='init()'>
@@ -50,6 +60,10 @@ async function init() {
     
     var fuelDropdown = d3.select('body').append('select')
                     .attr('class', 'fuel')
+    
+    const header = d3.select('body').append('h1')
+                    .attr('class', 'header1')
+                    .text('Car Fuel Efficiency 2017')
                     
 
     var allFuel = d3.map(data, function(d) { return (d.Fuel)}).keys()
