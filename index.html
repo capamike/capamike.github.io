@@ -237,6 +237,9 @@ async function init() {
         .attr('transform', 'translate(400,200)')
         .attr('class', 'annotation-group')
         .call(annotations['Gasoline'])
+
+    d3.selectAll('.connector-end')
+        .attr('fill', 'yellow')
         
 
     svg.append('g')
@@ -312,6 +315,9 @@ async function init() {
             .attr('transform', 'translate(400,200)')
             .attr('class', 'annotation-group')
             .call(annotations[fuelSelected])
+
+        d3.selectAll('.connector-end')
+            .attr('fill', 'yellow')
 
     })
     
