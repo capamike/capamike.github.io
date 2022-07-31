@@ -145,13 +145,13 @@ async function init() {
 
     var annotations = {
 
-        'Gasoline': d3.annotation().editMode(true)
+        'Gasoline': d3.annotation()
             .type(d3.annotationCalloutCircle)
             .annotations([vizAnnotations[0]]),
-        'Diesel': d3.annotation().editMode(true)
+        'Diesel': d3.annotation()
             .type(d3.annotationCalloutCircle)
             .annotations([vizAnnotations[1]]),
-        'Electricity': d3.annotation().editMode(true)
+        'Electricity': d3.annotation()
             .type(d3.annotationCalloutCircle)
             .annotations([vizAnnotations[2]])
     }
