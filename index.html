@@ -299,7 +299,7 @@ async function init() {
                         return 'hidden'
                 })
             
-            svg.selectAll('.annotation-group').remove()
+            await svg.selectAll('.annotation-group').remove()
             
             svg.append('g')
                 .attr('transform', 'translate(400,200)')
