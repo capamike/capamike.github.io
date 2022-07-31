@@ -211,6 +211,7 @@ async function init() {
         .text("Average Highway MPG");
     
     svg.append('g')
+        .attr('transform', 'translate(400,200)')
         .attr('class', 'annotation-group')
         .call(annotations)
         
