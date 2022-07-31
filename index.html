@@ -104,7 +104,7 @@ async function init() {
     const vizAnnotations = [
         {
             note: {
-                label: "Gasoline cars have the worst fuel efficiency with an average of "+data.gas_avg[0]+" city MPG and "+data.gas_avg[1]+" highway MPG",
+                label: "Gasoline cars have the worst fuel efficiency with an average of "+averages.gas_avg[0]+" city MPG and "+averages.gas_avg[1]+" highway MPG",
                 title: "Average of Gasoline cars"
             },
             connector: {
@@ -119,7 +119,7 @@ async function init() {
         },
         {
             note: {
-                label: "Diesel cars have slightly better fuel efficiency than gasoline cars with an average of "+data.diesel_avg[0]+" city MPG and "+data.diesel_avg[1]+" highway MPG",
+                label: "Diesel cars have slightly better fuel efficiency than gasoline cars with an average of "+averages.diesel_avg[0]+" city MPG and "+averages.diesel_avg[1]+" highway MPG",
                 title: "Average of Diesel cars"
             },
             connector: {
@@ -134,7 +134,7 @@ async function init() {
         },
         {
             note: {
-                label: "Electric cars have the best fuel efficiency with an average of "+data.elec_avg[0]+" city MPG and "+data.elec_avg[1]+" highway MPG",
+                label: "Electric cars have the best fuel efficiency with an average of "+averages.elec_avg[0]+" city MPG and "+averages.elec_avg[1]+" highway MPG",
                 title: "Average of Electric cars"
             },
             connector: {
