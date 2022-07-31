@@ -145,7 +145,7 @@ async function init() {
 
     var annotations = d3.annotation()
         .type(d3.annotationCalloutCircle)
-        .annotations(annotations)
+        .annotations(vizAnnotations)
 
     var svg = d3.select('#narrative-viz')
         .append("svg")
