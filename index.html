@@ -143,9 +143,18 @@ async function init() {
         }
     ]
 
-    var annotations = d3.annotation()
-        .type(d3.annotationCalloutCircle)
-        .annotations(vizAnnotations)
+    var annotations = {
+
+        'Gasoline': d3.annotation()
+            .type(d3.annotationCalloutCircle)
+            .annotations(vizAnnotations[0]),
+        'Diesel': d3.annotation()
+            .type(d3.annotationCalloutCircle)
+            .annotations(vizAnnotations[1]),
+        'Electricity': d3.annotation()
+            .type(d3.annotationCalloutCircle)
+            .annotations(vizAnnotations[2])
+    }
 
     console.log(annotations)
 
@@ -215,7 +224,7 @@ async function init() {
     svg.append('g')
         .attr('transform', 'translate(400,200)')
         .attr('class', 'annotation-group')
-        .call(annotations)
+        .call(annotations['Gasoline'])
         
 
     svg.append('g')
@@ -285,6 +294,13 @@ async function init() {
                     return 'hidden'
             })
         
+        svg.selectAll('.annotation-group').remove()
+        
+        svg.append('g')
+            .attr('transform', 'translate(400,200)')
+            .attr('class', 'annotation-group')
+            .call(annotations[fuelSelected])
+
     })
     
         
