@@ -147,6 +147,8 @@ async function init() {
         .type(d3.annotationCalloutCircle)
         .annotations(vizAnnotations)
 
+    console.log(annotations)
+
     var svg = d3.select('#narrative-viz')
         .append("svg")
             .attr('width', 1800)
