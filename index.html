@@ -269,7 +269,7 @@ async function init() {
                 .style('opacity', 0)
         })
 
-        svg.append('g')
+        svg.append('g').transition().duration(300)
             .attr('transform', 'translate(400,200)')
             .attr('class', 'annotation-group')
             .call(annotations['Gasoline'])
@@ -301,7 +301,7 @@ async function init() {
         
         svg.selectAll('.annotation-group').remove()
         
-        svg.append('g')
+        svg.append('g').transition().duration(300)
             .attr('transform', 'translate(400,200)')
             .attr('class', 'annotation-group')
             .call(annotations[fuelSelected])
