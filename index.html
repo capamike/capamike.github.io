@@ -25,6 +25,17 @@ select.fuel {
     top: 170px;
 }
 
+div.fuelSelectionText {	
+    position: absolute;			
+    text-align: center;			
+    width: 200px;					
+    font: 12px sans-serif;		
+    left: 420px;
+    top: 110px;
+}
+
+
+
 h1.header1 {	
     position: absolute;			
     text-align: center;			
@@ -58,7 +69,12 @@ async function init() {
     
     var fuelDropdown = d3.select('body').append('select')
                     .attr('class', 'fuel')
-    
+
+    var fuelSelectionText = d3.select('body').append('div')
+        .attr('class', 'fuelSelectionText')
+        .text('Fuel Type')
+
+
     const header = d3.select('body').append('h1')
                     .attr('class', 'header1')
                     .text('Car Fuel Efficiency 2017')
