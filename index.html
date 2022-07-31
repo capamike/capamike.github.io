@@ -279,35 +279,35 @@ async function init() {
     
         fuelDropdown.on('change', function(inp){
 
-        fuelSelected = d3.select(this).property('value')
+            fuelSelected = d3.select(this).property('value')
 
-        svg
-            .selectAll('circle')
-            .transition()
-            .duration(1000)
-            .attr('fill', function(d) { return colors(d.Fuel)})
-            .style('opacity', function(d){
-                if(d.Fuel == fuelSelected) 
-                    return 1
-                else
-                    return 0
-            })
-            .style('visibility', function(d){
-                if(d.Fuel == fuelSelected) 
-                    return 'visible'
-                else
-                    return 'hidden'
-            })
-        
-        svg.selectAll('.annotation-group').remove()
-        
-        svg.append('g')
-            .attr('transform', 'translate(400,200)')
-            .attr('class', 'annotation-group')
-            .call(annotations[fuelSelected])
+            svg
+                .selectAll('circle')
+                .transition()
+                .duration(1000)
+                .attr('fill', function(d) { return colors(d.Fuel)})
+                .style('opacity', function(d){
+                    if(d.Fuel == fuelSelected) 
+                        return 1
+                    else
+                        return 0
+                })
+                .style('visibility', function(d){
+                    if(d.Fuel == fuelSelected) 
+                        return 'visible'
+                    else
+                        return 'hidden'
+                })
+            
+            
+            
+            svg.append('g')
+                .attr('transform', 'translate(400,200)')
+                .attr('class', 'annotation-group')
+                .call(annotations[fuelSelected])
 
-        d3.selectAll('.connector-end')
-            .attr('fill', 'yellow')
+            d3.selectAll('.connector-end')
+                .attr('fill', 'yellow')
 
     })
     
