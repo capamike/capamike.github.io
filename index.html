@@ -269,7 +269,7 @@ async function init() {
                 .style('opacity', 0)
         })
 
-        svg.transition().duration(300)
+        svg
             .append('g')
             .attr('transform', 'translate(400,200)')
             .attr('class', 'annotation-group')
@@ -302,7 +302,7 @@ async function init() {
         
         svg.selectAll('.annotation-group').remove()
         
-        svg.transition().duration(500)
+        svg
             .append('g')
             .attr('transform', 'translate(400,200)')
             .attr('class', 'annotation-group')
