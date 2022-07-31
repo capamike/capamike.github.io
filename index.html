@@ -94,6 +94,7 @@ async function init() {
     var ys = d3.scaleLinear().domain([0,160]).range([yrange,0])
 
     var averages = calculateAverages(data)
+    console.log(averages)
 
     const vizAnnotations = [
         {
