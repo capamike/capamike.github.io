@@ -103,7 +103,7 @@ async function init() {
 
     const vizAnnotations = [
         {
-            node: {
+            note: {
                 label: "Gas label",
                 title: "Average of Gasoline cars"
             },
@@ -116,7 +116,7 @@ async function init() {
             dx: 160
         },
         {
-            node: {
+            note: {
                 label: "Diesel label",
                 title: "Average of Diesel cars"
             },
@@ -129,7 +129,7 @@ async function init() {
             dx: 160
         },
         {
-            node: {
+            note: {
                 label: "Electric label",
                 title: "Average of Electric cars"
             },
@@ -145,13 +145,13 @@ async function init() {
 
     var annotations = {
 
-        'Gasoline': d3.annotation()
+        'Gasoline': d3.annotation().editMode(true)
             .type(d3.annotationCalloutCircle)
             .annotations([vizAnnotations[0]]),
-        'Diesel': d3.annotation()
+        'Diesel': d3.annotation().editMode(true)
             .type(d3.annotationCalloutCircle)
             .annotations([vizAnnotations[1]]),
-        'Electricity': d3.annotation()
+        'Electricity': d3.annotation().editMode(true)
             .type(d3.annotationCalloutCircle)
             .annotations([vizAnnotations[2]])
     }
