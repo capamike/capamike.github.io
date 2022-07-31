@@ -279,7 +279,11 @@ async function init() {
         fuelDropdown.on('change', function(inp){
 
             fuelSelected = d3.select(this).property('value')
-            console.log(fuelSelected)
+            const fuelMap = {
+                'Gasoline': 0,
+                'Diesel': 1,
+                'Electricity': 2
+            }
 
             svg
                 .selectAll('circle')
@@ -300,11 +304,15 @@ async function init() {
                 })
             
             svg.selectAll('.annotation-group').remove()
+
+            var selectedAnno = d3.annotation()
+                                .type(d3.annotationLabel)
+                                .annotations([vizAnnotations[fuelMap[fuelSelected]]])
             
             svg.append('g')
                 .attr('transform', 'translate(400,200)')
                 .attr('class', 'annotation-group')
-                .call(annotations[fuelSelected])
+                .call(selectedAnno)
 
             d3.selectAll('.connector-end')
                 .attr('fill', 'yellow')
