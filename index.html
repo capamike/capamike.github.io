@@ -49,6 +49,41 @@ h1.header1 {
 <body onload='init()'>
 </svg>
 <script>
+
+async function calculateAverages(data) {
+    var count = 0
+    var tmp = {
+        'gas_hw_sum': 0,
+        'gas_city_sum': 0,
+        'elec_hw_sum': 0,
+        'elec_city_sum': 0,
+        'diesel_hw_sum': 0,
+        'diesel_city_sum': 0
+    }
+
+    data.forEach(function(d){
+        count += 1
+        if (d.Fuel == 'Gasoline') {
+            tmp['gas_hw_sum'] += Number.parseInt(d.AverageHighwayMPG)
+            tmp['gas_city_sum'] += Number.parseInt(d.AverageCityMPG)
+        }
+        if (d.Fuel == 'Electricity') {
+            tmp['elec_hw_sum'] += Number.parseInt(d.AverageHighwayMPG)
+            tmp['elec_city_sum'] += Number.parseInt(d.AverageCityMPG)
+        }
+        if (d.Fuel == 'Diesel') {
+            tmp['diesel_hw_sum'] += Number.parseInt(d.AverageHighwayMPG)
+            tmp['diesel_city_sum'] += Number.parseInt(d.AverageCityMPG)
+        }
+    })
+
+    return {
+        gas_avg: [tmp['gas_city_sum']/count, tmp['gas_hw_sum']/count],
+        elec_avg: [tmp['elec_city_sum']/count, tmp['elec_hw_sum']/count],
+        diesel_avg: [tmp['diesel_city_sum']/count, tmp['diesel_hw_sum']/count]
+    }
+}
+
 async function init() {
 
     var xrange = 1000
@@ -57,6 +92,54 @@ async function init() {
     var data = await d3.csv("https://flunky.github.io/cars2017.csv")
     var xs = d3.scaleLinear().domain([0,160]).range([0,xrange])
     var ys = d3.scaleLinear().domain([0,160]).range([yrange,0])
+
+    var averages = calculateAverages(data)
+
+    const vizAnnotations = [
+        {
+            node: {
+                label: "Gas label",
+                title: "Average of Gasoline cars"
+            },
+            subject: {
+                radius: 10
+            },
+            x: xs(averages.gas_avg[0]),
+            y: ys(averages.gas_avg[1]),
+            dy: 140,
+            dx: 160
+        },
+        {
+            node: {
+                label: "Diesel label",
+                title: "Average of Diesel cars"
+            },
+            subject: {
+                radius: 10
+            },
+            x: xs(averages.diesel_avg[0]),
+            y: ys(averages.diesel_avg[1]),
+            dy: 140,
+            dx: 160
+        },
+        {
+            node: {
+                label: "Electric label",
+                title: "Average of Electric cars"
+            },
+            subject: {
+                radius: 10
+            },
+            x: xs(averages.elec_avg[0]),
+            y: ys(averages.elec_avg[1]),
+            dy: 140,
+            dx: 160
+        }
+    ]
+
+    var annotations = d3.annotations()
+        .type(d3.annotationCalloutCircle)
+        .annotations(annotations)
 
     var svg = d3.select('#narrative-viz')
         .append("svg")
@@ -120,6 +203,10 @@ async function init() {
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("Average Highway MPG");
+    
+    svg.append('g')
+        .attr('class', 'annotation-group')
+        .call(annotations)
         
 
     svg.append('g')
