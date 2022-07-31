@@ -108,12 +108,10 @@ async function init() {
                 title: "Average of Gasoline cars"
             },
             connector: {
-                end: 'dot'
+                end: 'dot',
+                endScale: 15
             },
             color: ["#E8336D"],
-            subject: {
-                radius: 10
-            },
             x: xs(averages.gas_avg[0]),
             y: ys(averages.gas_avg[1]),
             dy: -140,
@@ -125,12 +123,10 @@ async function init() {
                 title: "Average of Diesel cars"
             },
             connector: {
-                end: 'dot'
+                end: 'dot',
+                endScale: 15
             },
             color: ["#E8336D"],
-            subject: {
-                radius: 10
-            },
             x: xs(averages.diesel_avg[0]),
             y: ys(averages.diesel_avg[1]),
             dy: -140,
@@ -142,12 +138,10 @@ async function init() {
                 title: "Average of Electric cars"
             },
             connector: {
-                end: 'dot'
+                end: 'dot',
+                endScale: 15
             },
             color: ["#E8336D"],
-            subject: {
-                radius: 10
-            },
             x: xs(averages.elec_avg[0]),
             y: ys(averages.elec_avg[1]),
             dy: -140,
